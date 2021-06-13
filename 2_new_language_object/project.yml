@@ -1,8 +1,5 @@
 title: "New Language Project for Part-of-speech Tagging, Lemmatizer and Entities from CoNLL-U data"
-description: "This project template lets you train a part-of-speech tagger, lemmatizer and entities from a [Universal Dependencies](https://universaldependencies.org/) corpus. It takes care of downloading the treebank, converting it to spaCy's format and training and evaluating the model. Just make sure to adjust the `lang` and treebank settings in the variables below. Use `xx` for multi-language if no language-specific tokenizer is available in spaCy."
-
-title: "Alternative Serbian training pipeline with a lot of lemma lookups"
-description: "TODO"
+description: "This project template lets you train a part-of-speech tagger, lemmatizer and features from a [Universal Dependencies](https://universaldependencies.org/) corpus. It takes care of downloading the treebank, converting it to spaCy's format and training and evaluating the model. Just make sure to adjust the `lang` and treebank settings in the variables below. Use `xx` for multi-language if no language-specific tokenizer is available in spaCy."
 
 # Variables can be referenced across the project.yml using ${vars.var_name}
 vars:
