@@ -4,9 +4,9 @@ This repository is the central point for documentation and data for your project
 
 `0_original_texts`: This folder contains the original text files for the project. This is a record of the original state of the texts before any pre-processing and annotation.
 
-`1_lookups_data`: This folder contains the json lookups files for unambiguous lemmata, pos and ents. This data is used to document the bulk annotation process and is superseded by the manually annotated data from INCEpTION.
+`1_lookups_data`: This folder contains the json lookups files for unambiguous lemmata, pos, and feats. This data is used to document the bulk annotation process and is superseded by the manually annotated data from INCEpTION.
 
-`2_new_language_object`: This folder contains the nlp object folder from either Cadet or the Cadet notebook. This folder is fetched during training to load the new language object. It also contains the project.yml file. 
+`2_new_language_object`: This folder contains the nlp object folder from either Cadet or the Cadet notebook. This folder is fetched during training to load the new language object.
 
 `3_inception_export`: This folder contains the CoNLL-U data that is exported from INCEpTION once annotation work is completed. If versioning of exports is required, you can place each version is its own subfolder. During training, this folder provides the main source of training data and should be split between training and validation sets.
 
@@ -16,6 +16,7 @@ This repository is the central point for documentation and data for your project
 - Short description of your language and your research goals.
 
 ## Language(s) 
+- Name of the language or languages in the corpus.
 
 
 ## Curation Rationale
