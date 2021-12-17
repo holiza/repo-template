@@ -4,12 +4,12 @@ description: "This project template lets you train a part-of-speech tagger, morp
 # Variables can be referenced across the project.yml using ${vars.var_name}
 vars:
   config: "default"
-  lang: "en"
-  treebank: "UD_English-EWT"
+  lang: "yo"
+  treebank: "yoruba"
   train_name: "en_ewt-ud-train"
   dev_name: "en_ewt-ud-dev"
   test_name: "en_ewt-ud-test"
-  package_name: "ud_en_ewt"
+  package_name: "new language"
   package_version: "0.0.0"
   gpu: -1
 
@@ -20,8 +20,8 @@ directories: ["assets", "corpus", "training", "metrics", "configs", "packages"]
 assets:
   - dest: "assets/${vars.treebank}"
     git:
-      repo: "https://github.com/UniversalDependencies/${vars.treebank}"
-      branch: "master"
+      repo: "https://github.com/New-Languages-for-NLP/${vars.treebank}/3_inception_export/"
+      branch: "main"
       path: ""
 
 workflows:
