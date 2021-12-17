@@ -20,7 +20,7 @@ directories: ["assets", "corpus", "training", "metrics", "configs", "packages"]
 assets:
   - dest: "assets/${vars.treebank}"
     git:
-      repo: "https://github.com/New-Languages-for-NLP/${vars.treebank}/3_inception_export/"
+      repo: "https://github.com/New-Languages-for-NLP/${vars.treebank}"
       branch: "main"
       path: ""
 
