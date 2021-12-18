@@ -32,8 +32,8 @@ assets:
 workflows:
   all:
     - install
-    - split
     - convert
+    - split
     - debug
     - train
     - evaluate
@@ -47,7 +47,14 @@ commands:
       - "pip install -e assets/${vars.treebank}/2_new_language_object"
     deps:
       - "assets/${vars.treebank}/2_new_language_object"
-
+      
+  - name: convert
+    help: "Convert the data to spaCy's format"
+    script: 
+       - "python scripts/convert.py assets/${vars.treebank}/3_inception_export"
+    deps:
+      - "assets/${vars.treebank}/3_inception_export"
+    
   - name: split
     help: "Split the data into test and train sets"
     script: 
@@ -55,21 +62,6 @@ commands:
     outputs:
       - "assets/test.conllu"
       - "assets/train.conllu"
-      
-  - name: convert
-    help: "Convert the data to spaCy's format"
-    script:
-      - "mkdir -p corpus/${vars.treebank}"
-      - "python -m spacy convert assets/train.conllu corpus/${vars.treebank}/ --converter conllu --n-sents 10 --merge-subtokens"
-      - "python -m spacy convert assets/test.conllu corpus/${vars.treebank}/ --converter conllu --n-sents 10 --merge-subtokens"
-      - "mv corpus/${vars.treebank}/${vars.train_name}.spacy corpus/${vars.treebank}/train.spacy"
-      - "mv corpus/${vars.treebank}/${vars.test_name}.spacy corpus/${vars.treebank}/test.spacy"
-    deps:
-      - "assets/${vars.treebank}/${vars.train_name}.conllu"
-      - "assets/${vars.treebank}/${vars.test_name}.conllu"
-    outputs:
-      - "corpus/${vars.treebank}/train.spacy"
-      - "corpus/${vars.treebank}/test.spacy"
 
   - name: debug
     help: "Assess data for training using spaCy's debug data"
