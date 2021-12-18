@@ -26,7 +26,10 @@ assets:
 
 workflows:
   all:
+    - install
+    - split
     - preprocess
+    - debug
     - train
     - evaluate
     - package
@@ -39,6 +42,10 @@ commands:
     deps:
       - "assets/${vars.treebank}/2_new_language_object"
 
+  - name: split
+    help: "Split the data into test and train sets"
+    script: ""
+      
   - name: preprocess
     help: "Convert the data to spaCy's format"
     script:
@@ -58,6 +65,11 @@ commands:
       - "corpus/${vars.treebank}/dev.spacy"
       - "corpus/${vars.treebank}/test.spacy"
 
+  - name: debug
+    help: "Assess data for training using spaCy's debug data"
+    script:
+      - ""
+      
   - name: train
     help: "Train ${vars.treebank}"
     script:
