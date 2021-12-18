@@ -32,6 +32,13 @@ workflows:
     - package
 
 commands:
+  - name: install
+    help: "Install the new language object from Cadet"
+    script:
+      - ""
+    deps:
+      - "assets/${vars.treebank}/2_new_language_object"
+
   - name: preprocess
     help: "Convert the data to spaCy's format"
     script:
