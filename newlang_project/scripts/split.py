@@ -15,6 +15,7 @@ def split(export_path: str, test_size:float, random_state:int):
     export_path = Path.cwd() / export_path
     assert entities_path.exists()
     #TODO load all conllu file, make list that can be split 
+    # split should be stratified so that text-types are evenly distributed in the training data https://scikit-learn.org/stable/modules/cross_validation.html#stratification
     #train_set, validation_set = train_test_split(docs, test_size=test_size)
     #print(f'Created {len(train_set)} training docs')
     #print(f'Created {len(validation_set)} validation docs')
