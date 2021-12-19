@@ -7,7 +7,7 @@ description: "This project template lets you train a part-of-speech tagger, morp
 
 vars:
   config: "config"
-  lang: "yo"
+  lang: "clara"
   treebank: "urban-giggle"
   test_size: 0.4 
   random_state: 11
