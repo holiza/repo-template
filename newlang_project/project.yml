@@ -59,7 +59,7 @@ commands:
   - name: split
     help: "Split the data into test and train sets"
     script: 
-      - "python scripts/split.py assets/${vars.treebank}/3_inception_export ${vars.test_size} ${vars.random_state}"
+      - "python scripts/split.py ${vars.test_size} ${vars.random_state}"
     outputs:
       - "assets/test.conllu"
       - "assets/train.conllu"
