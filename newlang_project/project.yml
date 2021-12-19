@@ -67,7 +67,8 @@ commands:
   - name: config
     help: "Generate config file"
     script:
-      - "python scripts/create_config.py"
+      - "python assets/${vars.treebank}/2_new_language_object/__init__.py"
+      - "python -m spacy init config output_file --lang ${vars.lang}"
       
   - name: debug
     help: "Assess data for training using spaCy's debug data"
