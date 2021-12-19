@@ -23,7 +23,7 @@ def convert(export_path: str):
     
     #convert conllu to .spacy 
     for conllu in conllu_files:
-        subprocess.run(['python', '-m', 'spacy', 'convert', f'{str(conllu)}', "./corpus"])
+        subprocess.run(['python', '-m', 'spacy', 'convert', f'{str(conllu)}', "./corpus", "-n 10"])
         
     
 
