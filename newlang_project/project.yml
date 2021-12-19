@@ -45,7 +45,8 @@ commands:
   - name: install
     help: "Install the new language object from Cadet"
     script:
-      - "pip install -e assets/${vars.treebank}/2_new_language_object"
+      -"mv assets/${vars.treebank}/2_new_language_object assets/${vars.treebank}/new_lang/2_new_language_object"
+      - "pip install -e assets/${vars.treebank}/new_lang/2_new_language_object"
     deps:
       - "assets/${vars.treebank}/2_new_language_object"
       
@@ -67,7 +68,7 @@ commands:
   - name: config
     help: "Generate config file"
     script:
-      - "python assets/${vars.treebank}/2_new_language_object/__init__.py"
+      #- "python assets/${vars.treebank}/2_new_language_object/__init__.py"
       - "python -m spacy init config output_file --lang ${vars.lang}"
       
   - name: debug
