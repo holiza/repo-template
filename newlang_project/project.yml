@@ -48,8 +48,8 @@ commands:
       - "rm -rf lang"
       - "mkdir lang"
       - "mkdir lang/${vars.lang}"
-      - "cp -r assets/${vars.treebank}/2_new_language_object/ lang/${vars.lang}" 
-      - "mv lang/${vars.lang}/2_new_language_object/setup.py lang/${vars.lang}/"
+      - "cp -r assets/${vars.treebank}/2_new_language_object/ lang/${vars.lang}/${vars.lang}" 
+      - "mv lang/${vars.lang}/${vars.lang}/setup.py lang/${vars.lang}/"
       - "pip install -e lang/${vars.lang}"
     deps:
       - "assets/${vars.treebank}/2_new_language_object"
