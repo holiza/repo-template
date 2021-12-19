@@ -45,7 +45,7 @@ commands:
   - name: install
     help: "Install the new language object from Cadet"
     script:
-      -"mv assets/${vars.treebank}/2_new_language_object assets/${vars.treebank}/new_lang/2_new_language_object"
+      - "mv assets/${vars.treebank}/2_new_language_object assets/${vars.treebank}/new_lang/2_new_language_object"
       - "pip install -e assets/${vars.treebank}/new_lang/2_new_language_object"
     deps:
       - "assets/${vars.treebank}/2_new_language_object"
