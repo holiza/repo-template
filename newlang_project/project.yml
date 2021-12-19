@@ -34,6 +34,7 @@ workflows:
     - install
     - convert
     - split
+    - config
     - debug
     - train
     - evaluate
@@ -63,6 +64,11 @@ commands:
       - "assets/test.conllu"
       - "assets/train.conllu"
 
+  - name: config
+    help: "Generate config file"
+    script:
+      - "python scripts/create_config.py"
+      
   - name: debug
     help: "Assess data for training using spaCy's debug data"
     script:
