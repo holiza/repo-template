@@ -4,22 +4,40 @@ import srsly
 import typer
 import warnings
 from pathlib import Path
+import random
 
 import spacy
 from spacy.tokens import DocBin
 from spacy.util import filter_spans
 from sklearn.model_selection import train_test_split
 
+nlp = spacy.blank("xx") 
 
-def split(export_path: str, test_size:float, random_state:int):
-    export_path = Path.cwd() / export_path
-    assert entities_path.exists()
-    #TODO load all conllu file, make list that can be split 
-    # split should be stratified so that text-types are evenly distributed in the training data https://scikit-learn.org/stable/modules/cross_validation.html#stratification
-    #train_set, validation_set = train_test_split(docs, test_size=test_size)
-    #print(f'Created {len(train_set)} training docs')
-    #print(f'Created {len(validation_set)} validation docs')
-    
+def split(test_size:float, random_state:int):
+    corpus_path = Path.cwd() / "corpus"
+    assert corpus_path.exists()
+
+    doc_bin = DocBin()
+    for spacy_file in corpus_path.iterdir():
+        doc_bin.merge(DocBin().from_bytes(spacy_file.read_bytes()))
+    docs = [doc for doc in doc_bin.get_docs(nlp.vocab)]
+    random.shuffle(docs)
+    train_set, validation_set = train_test_split(docs, test_size=test_size, random_state=random_state)
+        
+    # the DocBin will store the training documents
+    train_db = DocBin()
+    for doc in train_set:
+        train_db.add(doc)
+    train_db.to_disk((corpus_path /"train.spacy"))
+
+    # Save the validation Docs to disk 
+    validation_db = DocBin()
+    for doc in validation_set:
+        validation_db.add(doc)
+    validation_db.to_disk((corpus_path / "dev.spacy"))
+
+    print(f'😊 Created {len(train_set)} training docs')
+    print(f'😊 Created {len(validation_set)} validation docs')
 
 if __name__ == "__main__":
     typer.run(split)
