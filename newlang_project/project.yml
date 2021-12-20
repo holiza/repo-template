@@ -72,12 +72,13 @@ commands:
   - name: config
     help: "Generate config file"
     script:
-      - "python -m spacy init config config.cfg --lang ${vars.lang}"
+      - "python -m spacy init config config.cfg --lang ${vars.lang} -F"
       
   - name: debug
     help: "Assess data for training using spaCy's debug data"
     script:
-      - "python -m spacy --help"
+      - "python scripts/update_config.py"
+      - "python -m spacy debug data ./config.cfg"
       
   - name: train
     help: "Train ${vars.treebank}"
