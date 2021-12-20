@@ -83,11 +83,11 @@ commands:
   - name: train
     help: "Train ${vars.treebank}"
     script:
-      - "python -m spacy train configs/${vars.config}.cfg --output training/${vars.treebank} --gpu-id ${vars.gpu} --paths.train corpus/${vars.treebank}/train.spacy --paths.dev corpus/${vars.treebank}/dev.spacy --nlp.lang=${vars.lang}"
+      - "python -m spacy train config.cfg --output training/${vars.treebank} --gpu-id ${vars.gpu} --nlp.lang=${vars.lang}"
     deps:
-      - "corpus/${vars.treebank}/train.spacy"
-      - "corpus/${vars.treebank}/dev.spacy"
-      - "configs/${vars.config}.cfg"
+      - "corpus/train.spacy"
+      - "corpus/dev.spacy"
+      - "config.cfg"
     outputs:
       - "training/${vars.treebank}/model-best"
 
