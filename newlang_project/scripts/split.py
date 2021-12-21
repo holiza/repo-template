@@ -11,9 +11,10 @@ from spacy.tokens import DocBin
 from spacy.util import filter_spans
 from sklearn.model_selection import train_test_split
 
-nlp = spacy.blank("xx") 
 
-def split(test_size:float, random_state:int):
+
+def split(test_size:float, random_state:int, lang:str):
+    nlp = spacy.blank(lang) 
     corpus_path = Path.cwd() / "corpus"
     assert corpus_path.exists()
 
