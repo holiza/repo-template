@@ -66,6 +66,8 @@ commands:
     help: "Split the data into train, validation, and test"
     script: 
       - "python scripts/split.py ${vars.test_size} ${vars.random_state} ${vars.lang}"
+    deps:
+      - "corpus/converted"
     outputs:
       - "corpus/train.spacy"
       - "corpus/dev.spacy"
