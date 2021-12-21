@@ -67,7 +67,6 @@ commands:
     script: 
       - "python scripts/split.py ${vars.test_size} ${vars.random_state} ${vars.lang}"
     outputs:
-    outputs:
       - "corpus/train.spacy"
       - "corpus/dev.spacy"
       - "corpus/test.spacy"
