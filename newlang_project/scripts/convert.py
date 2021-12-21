@@ -12,7 +12,7 @@ from spacy.util import filter_spans, get_lang_class
 from sklearn.model_selection import train_test_split
 
 
-def convert(export_path: str, n_sents:int=None, lang:str):
+def convert(export_path: str, n_sents:int, lang:str):
 
     lang = get_lang_class(lang)
     nlp = lang()
