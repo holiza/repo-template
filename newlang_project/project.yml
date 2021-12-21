@@ -58,6 +58,7 @@ commands:
     script: 
       - "mkdir -p ./corpus/conllu"
       - "mkdir -p ./corpus/conll"
+      - "mkdir -p ./corpus/converted"
       - "python scripts/convert.py assets/${vars.treebank}/3_inception_export ${vars.n_sents} ${vars.lang}"
     deps:
       - "assets/${vars.treebank}/3_inception_export"
