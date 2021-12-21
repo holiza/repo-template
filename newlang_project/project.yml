@@ -7,13 +7,10 @@ description: "This project template lets you train a part-of-speech tagger, morp
 
 vars:
   config: "config"
-  lang: "clara"
+  lang: "yi"
   treebank: "urban-giggle"
   test_size: 0.4 
   random_state: 11
-  train_name: "en_ewt-ud-train"
-  dev_name: "en_ewt-ud-dev"
-  test_name: "en_ewt-ud-test"
   package_name: "new language"
   package_version: "0.0.0"
   gpu: -1
