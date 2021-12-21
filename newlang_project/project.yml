@@ -56,7 +56,7 @@ commands:
   - name: convert
     help: "Convert the data to spaCy's format"
     script: 
-       - "python scripts/convert.py assets/${vars.treebank}/3_inception_export ${vars.n_sents} ${vars.langs}"
+       - "python scripts/convert.py assets/${vars.treebank}/3_inception_export ${vars.n_sents} ${vars.lang}"
     deps:
       - "assets/${vars.treebank}/3_inception_export"
     
