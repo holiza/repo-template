@@ -35,12 +35,19 @@ def convert(export_path: str, n_sents:int, lang:str):
     matches = [x for x in conllu if x in conll] 
     
     for match in matches: 
-        conllu_bin = DocBin().from_bytes(spacy_file.read_bytes())
-        conll_bin = DocBin().from_bytes(spacy_file.read_bytes())
-    #TODO identify where we have both a conll and conllu file for a given text
-    #For each of these, load the DocBins, merge the docs with doc.from_docs  https://spacy.io/api/doc#from_docs
-    # Load /corpus
+        conllu_file = export_path / (match + '.conllu')
+        conllu_bin = DocBin().from_bytes(conllu_file.read_bytes())
+        conllu_docs = [d for d in conllu_bin.get_docs(nlp.vocab)]
+        
+        conll_file = export_path / (match + '.conll')
+        conll_bin = DocBin().from_bytes(conll_file.read_bytes())
+        conll_docs = [d for d in conll_bin.get_docs(nlp.vocab)]
     
-
+        joined_docs = []
+        for ling, ner in zip(conllu_docs, conll_docs):
+            ling.ents = ner.ents
+            joined_docs.append(ling)
+        # works?
+        
 if __name__ == "__main__":
     typer.run(convert)
