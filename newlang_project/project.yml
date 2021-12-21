@@ -56,8 +56,8 @@ commands:
   - name: convert
     help: "Convert the data to spaCy's format"
     script: 
-      - "mkdir ./corpus/conllu"
-      - "mkdir ./corpus/conll"
+      - "mkdir -p ./corpus/conllu"
+      - "mkdir -p ./corpus/conll"
       - "python scripts/convert.py assets/${vars.treebank}/3_inception_export ${vars.n_sents} ${vars.lang}"
     deps:
       - "assets/${vars.treebank}/3_inception_export"
