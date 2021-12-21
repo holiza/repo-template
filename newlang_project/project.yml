@@ -39,6 +39,7 @@ workflows:
     - train
     - evaluate
     - package
+    - document
 
 commands:
 
@@ -110,9 +111,7 @@ commands:
     outputs_no_cache:
       - "packages/${vars.lang}_${vars.package_name}-${vars.package_version}/dist/en_${vars.package_name}-${vars.package_version}.tar.gz"
 
-  - name: clean
-    help: "Remove intermediate files"
+  - name: document
+    help: "Generate project documentation"
     script:
-      - "rm -rf training/*"
-      - "rm -rf metrics/*"
-      - "rm -rf corpus/*"
+      - "python -m spacy project document --output README.md"
