@@ -23,13 +23,15 @@ def convert(export_path: str, n_sents:int=None, lang:str):
     conllu_files = [f for f in export_path.iterdir() if f.suffix == ".conllu"]
     #convert conllu to .spacy 
     for conllu in conllu_files:
-        subprocess.run(['python', '-m', 'spacy', 'convert', f'{str(conllu)}', "./corpus/conllu", "-n 10"])
+        subprocess.run(['python', '-m', 'spacy', 'convert', f'{str(conllu)}', "./corpus/conllu", f"-n {n_sents}"])
         
     conll_files = [f for f in export_path.iterdir() if f.suffix == ".conll"]
     #convert conll to .spacy 
     for conll in conll_files:
-        subprocess.run(['python', '-m', 'spacy', 'convert', f'{str(conll)}', "./corpus/conll", "-n 10"])
-    #TODO identify 
+        subprocess.run(['python', '-m', 'spacy', 'convert', f'{str(conll)}', "./corpus/conll", f"-n {n_sents}"])
+    
+    #TODO identify where we have both a conll and conllu file for a given text
+    #For each of these, load the DocBins, merge the docs with doc.from_docs  https://spacy.io/api/doc#from_docs
     
 
 if __name__ == "__main__":
