@@ -46,8 +46,9 @@ def split(test_size:float, random_state:int, lang:str):
         test_db.add(doc)
     test_db.to_disk((corpus_path / "test.spacy"))
 
-    print(f'😊 Created {len(train_set)} training docs')
+    print(f'🚂 Created {len(train_set)} training docs')
     print(f'😊 Created {len(validation_set)} validation docs')
+    print(f'🧪  Created {len(test_set)} test docs')
 
 if __name__ == "__main__":
     typer.run(split)
