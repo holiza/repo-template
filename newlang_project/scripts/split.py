@@ -17,7 +17,7 @@ def split(test_size:float, random_state:int, lang:str):
     lang = get_lang_class(lang)
     nlp = lang()
 
-    corpus_path = Path.cwd() / "corpus"
+    corpus_path = Path.cwd() / "corpus" / "converted
     assert corpus_path.exists()
 
     doc_bin = DocBin()
