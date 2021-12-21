@@ -34,8 +34,12 @@ def convert(export_path: str, n_sents:int=None, lang:str):
     conll  = [f.stem for f in conll_files]
     matches = [x for x in conllu if x in conll] 
     
+    for match in matches: 
+        conllu_bin = DocBin().from_bytes(spacy_file.read_bytes())
+        conll_bin = DocBin().from_bytes(spacy_file.read_bytes())
     #TODO identify where we have both a conll and conllu file for a given text
     #For each of these, load the DocBins, merge the docs with doc.from_docs  https://spacy.io/api/doc#from_docs
+    # Load /corpus
     
 
 if __name__ == "__main__":
