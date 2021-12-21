@@ -34,19 +34,23 @@ def convert(export_path: str, n_sents:int, lang:str):
     conll  = [f.stem for f in conll_files]
     matches = [x for x in conllu if x in conll] 
     
-    for match in matches: 
-        conllu_file = export_path / (match + '.conllu')
-        conllu_bin = DocBin().from_bytes(conllu_file.read_bytes())
-        conllu_docs = [d for d in conllu_bin.get_docs(nlp.vocab)]
-        
-        conll_file = export_path / (match + '.conll')
-        conll_bin = DocBin().from_bytes(conll_file.read_bytes())
-        conll_docs = [d for d in conll_bin.get_docs(nlp.vocab)]
-    
-        joined_docs = []
-        for ling, ner in zip(conllu_docs, conll_docs):
-            ling.ents = ner.ents
-            joined_docs.append(ling)
+    for file_ in conllu_files:
+        if file_.stem in matches:
+            conllu_file = export_path / (match + '.conllu')
+            conllu_bin = DocBin().from_bytes(conllu_file.read_bytes())
+            conllu_docs = [d for d in conllu_bin.get_docs(nlp.vocab)]
+
+            conll_file = export_path / (match + '.conll')
+            conll_bin = DocBin().from_bytes(conll_file.read_bytes())
+            conll_docs = [d for d in conll_bin.get_docs(nlp.vocab)]
+
+            joined_docs = []
+            for ling, ner in zip(conllu_docs, conll_docs):
+                ling.ents = ner.ents
+                joined_docs.append(ling)
+        else:
+            subprocess.run(['cp', f'{str(file_)}', f"./corpus/converted/{str(file_.name)}" ])
+            
         # works?
         
 if __name__ == "__main__":
