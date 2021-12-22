@@ -54,8 +54,10 @@ def convert(export_path: str, n_sents:int, lang:str):
             for ling, ner in zip(conllu_docs, conll_docs):
                 ling.ents = ner.ents
                 joined_docs.append(ling)
-            print(len(joined_docs))
-        # works? Not just yet
+            
+            out_bin = DocBin()
+            [out_bin.add(doc) for doc in joined_docs]
+            out_bin.to_disk(f'./corpus/converted/{file_.stem}.spacy')
         
 if __name__ == "__main__":
     typer.run(convert)
