@@ -20,10 +20,16 @@ def convert(export_path: str, n_sents:int, lang:str):
     export_path = Path(export_path)
     assert export_path.exists()
     
+    converted_path = Path.cwd() / 'corpus' / 'converted'
+    assert converted_path.exists()
+    
+    conll_path = Path.cwd() / 'corpus' / 'conll'
+    assert conll_path.exists()
+    
     conllu_files = [f for f in export_path.iterdir() if f.suffix == ".conllu"]
     #convert conllu to .spacy 
     for conllu in conllu_files:
-        subprocess.run(['python', '-m', 'spacy', 'convert', f'{str(conllu)}', "./corpus/conllu", f"-n {n_sents}"])
+        subprocess.run(['python', '-m', 'spacy', 'convert', f'{str(conllu)}', "./corpus/converted", f"-n {n_sents}"])
         
     conll_files = [f for f in export_path.iterdir() if f.suffix == ".conll"]
     #convert conll to .spacy 
@@ -36,11 +42,11 @@ def convert(export_path: str, n_sents:int, lang:str):
     
     for file_ in conllu_files:
         if file_.stem in matches:
-            conllu_file = export_path / (match + '.conllu')
+            conllu_file = converted_path / (match + '.spacy')
             conllu_bin = DocBin().from_bytes(conllu_file.read_bytes())
             conllu_docs = [d for d in conllu_bin.get_docs(nlp.vocab)]
 
-            conll_file = export_path / (match + '.conll')
+            conll_file = conll_path / (match + '.spacy')
             conll_bin = DocBin().from_bytes(conll_file.read_bytes())
             conll_docs = [d for d in conll_bin.get_docs(nlp.vocab)]
 
@@ -48,10 +54,8 @@ def convert(export_path: str, n_sents:int, lang:str):
             for ling, ner in zip(conllu_docs, conll_docs):
                 ling.ents = ner.ents
                 joined_docs.append(ling)
-        else:
-            subprocess.run(['cp', f'{str(file_)}', f"./corpus/converted/{str(file_.name)}" ])
-            
-        # works?
+            print(len(joined_docs))
+        # works? Not just yet
         
 if __name__ == "__main__":
     typer.run(convert)
