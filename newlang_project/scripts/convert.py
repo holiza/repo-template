@@ -42,11 +42,11 @@ def convert(export_path: str, n_sents:int, lang:str):
     
     for file_ in conllu_files:
         if file_.stem in matches:
-            conllu_file = converted_path / (match + '.spacy')
+            conllu_file = converted_path / (file_.stem + '.spacy')
             conllu_bin = DocBin().from_bytes(conllu_file.read_bytes())
             conllu_docs = [d for d in conllu_bin.get_docs(nlp.vocab)]
 
-            conll_file = conll_path / (match + '.spacy')
+            conll_file = conll_path / (file_.stem + '.spacy')
             conll_bin = DocBin().from_bytes(conll_file.read_bytes())
             conll_docs = [d for d in conll_bin.get_docs(nlp.vocab)]
 
