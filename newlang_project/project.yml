@@ -76,14 +76,14 @@ commands:
       
 
   - name: config
-    help: "Generate config file"
+    help: "Generate config file, and change to wandb logger"
     script:
       - "python -m spacy init config config.cfg --lang ${vars.lang} -F"
+      - "python scripts/update_config.py"
       
   - name: debug
     help: "Assess data for training using spaCy's debug data"
     script:
-      - "python scripts/update_config.py"
       - "python -m spacy debug data ./config.cfg"
       
   - name: train
