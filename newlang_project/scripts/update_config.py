@@ -4,7 +4,7 @@ from pathlib import Path
 import spacy
 
 
-def update_config(treebank:str, wanb:bool=False):
+def update_config(treebank:str, wanb:bool):
     config_path = Path('config.cfg') 
     config_text = config_path.read_text()
     config_text = config_text.replace('\ntrain = null\n','\ntrain = "corpus/converted/train.spacy"\n')
