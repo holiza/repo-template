@@ -19,7 +19,7 @@ vars:
 
 # These are the directories that the project needs. The project CLI will make
 # sure that they always exist.
-directories: ["assets", "corpus", "corpus/conllu", "training", "metrics", "configs", "packages"]
+directories: ["assets", "corpus", "corpus/conllu", "corpus/conll", "corpus/converted", "corpus/${vars.lang}", "training", "metrics", "configs", "packages"]
 
 assets:
   - dest: "assets/${vars.treebank}"
@@ -57,9 +57,6 @@ commands:
   - name: convert
     help: "Convert the data to spaCy's format"
     script: 
-      - "mkdir -p ./corpus/conllu"
-      - "mkdir -p ./corpus/conll"
-      - "mkdir -p ./corpus/converted"
       - "python scripts/convert.py assets/${vars.treebank}/3_inception_export ${vars.n_sents} ${vars.lang}"
     deps:
       - "assets/${vars.treebank}/3_inception_export"
