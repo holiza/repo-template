@@ -19,9 +19,9 @@ vars:
 
 # These are the directories that the project needs. The project CLI will make
 # sure that they always exist.
-directories: ["assets", "corpus", "corpus/conllu", "corpus/conll", "corpus/converted", "training", "metrics", "configs", "output", "packages"]
+directories: ["assets", "corpus", "corpus/conllu", "corpus/conll", "corpus/converted", "training", "metrics", "configs", "output", "export", "packages"]
 
-assets:
+assets: "export
   - dest: "assets/${vars.treebank}"
     git:
       repo: "https://github.com/New-Languages-for-NLP/${vars.treebank}"
