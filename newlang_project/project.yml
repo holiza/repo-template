@@ -21,7 +21,7 @@ vars:
 # sure that they always exist.
 directories: ["assets", "corpus", "corpus/conllu", "corpus/conll", "corpus/converted", "training", "metrics", "configs", "output", "export", "packages"]
 
-assets: "export
+assets:
   - dest: "assets/${vars.treebank}"
     git:
       repo: "https://github.com/New-Languages-for-NLP/${vars.treebank}"
