@@ -76,7 +76,7 @@ commands:
   - name: config
     help: "Generate config file, and change to wandb logger"
     script:
-      - "python -m spacy init config config.cfg --lang ${vars.lang} -F"
+      - "python -m spacy init config config.cfg --lang ${vars.lang} --gpu ${vars.gpu} -F"
       - "python scripts/update_config.py ${vars.treebank} ${vars.wandb}"
       
   - name: debug
